@@ -11,7 +11,7 @@
         protected function tearDown()
          {
             Brand::deleteAll();
-             //Store::deleteAll();
+             Store::deleteAll();
          }
         //Initialize a Store with a brand and be able to get it back out of the object using getBrand().
         function testGetBrand()
@@ -145,100 +145,89 @@
             $result = Brand::find($test_brand->getId());
             $this->assertEquals($test_brand, $result);
         }
-        // function testUpdate()
-        // {
-        //     //Arrange
-        //     $brand = "sHOE sTORE";
-        //
-        //
-        //     $test_brand = new Brand($brand);
-        //     $test_brand->save();
-        //     $new_name = "Home Economics";
-        //     //Act
-        //     $test_brand->update($new_name);
-        //     //Assert
-        //     $this->assertEquals("Home Economics", $test_brand->getBrand());
-        // }
-        // function testDeleteStore()
-        // {
-        //     //Arrange
-        //     $brand = "sHOE sTORE";
-        //
-        //
-        //     $test_brand = new Brand($brand);
-        //     $test_brand->save();
-        //     $name2 = "Home Economics";
-        //
-        //
-        //     $test_brand2 = new Brand($name2);
-        //     $test_brand2->save();
-        //     //Act
-        //     $test_brand->delete();
-        //     //Assert
-        //     $this->assertEquals([$test_brand2], Brand::getAll());
-        // }
-        // function testAddStudent()
-        // {
-        //     //Arrange
-        //     //We need a brand and a brand saved
-        //     $brand = "sHOE sTORE";
-        //
-        //
-        //     $test_brand = new Brand($brand);
-        //     $test_brand->save();
-        //     $brand= "Drupal";
-        //
-        //     $test_brand = new Brand($br);
-        //     $test_brand->save();
-        //     $test_brand->addStudent($test_brand);
-        //     $this->assertEquals($test_brand->getStudents(), [$test_brand]);
-        // }
-    //     //Now we write a test for the getStudents method since we need it to be able to test the Add Brand method.
-    //     function testGetStudents()
-    //     {
-    //         //Arrange
-    //         //start with a brand
-    //         $brand = "Home Economics";
-    //
-    //
-    //         $test_brand = new Brand($brand);
-    //         $test_brand->save();
-    //         //create 2 brands to assign to it.
-    //
-    //         $brand= "Dave";
-    //
-    //         $test_brand = new Brand($brand);
-    //         $test_brand->save();
-    //         $brand2 = "Sally";
-    //
-    //         $test_brand2 = new Brand($brand2);
-    //         $test_brand2->save();
-    //         //Act
-    //         //add both brands to the brand
-    //         $test_brand->addStudent($test_brand);
-    //         $test_brand->addStudent($test_brand2);
-    //         //Assert
-    //         //we should get both of them back when we call getStudents on the test brand.
-    //         $this->assertEquals($test_brand->getStudents(), [$test_brand, $test_brand2]);
-    //     }
-    //     //Deletes the ASSOCIATION between the brand and the course in the join table
-    //     function testDelete()
-    //     {
-    //         //Arrange
-    //         $brand = "sHOE sTORE";
-    //
-    //         $test_course = new Brand($brand);
-    //         $test_course->save();
-    //         $brand2="Bojana";
-    //
-    //         $test_brand = new Brand($brand);
-    //         $test_brand->save();
-    //         //Act
-    //         $test_course->addStudent($test_brand);
-    //         $test_course->delete();
-    //         var_dump($test_brand->getCourses());
-    //         //Assert
-    //         $this->assertEquals([], $test_brand->getCourses());
-    //     }
+        function testUpdate()
+        {
+            //Arrange
+            $brand = "sHOE sTORE";
+
+
+            $test_brand = new Brand($brand);
+            $test_brand->save();
+            $new_name = "Home Economics";
+            //Act
+            $test_brand->update($new_name);
+            //Assert
+            $this->assertEquals("Home Economics", $test_brand->getBrand());
+        }
+        function testDeleteStore()
+        {
+            //Arrange
+            $brand = "sHOE sTORE";
+            $test_brand = new Brand($brand);
+            $test_brand->save();
+
+            $name2 = "Home Economics";
+            $test_brand2 = new Brand($name2);
+            $test_brand2->save();
+            //Act
+            $test_brand->delete();
+            //Assert
+            $this->assertEquals([$test_brand2], Brand::getAll());
+        }
+        function testAddStore()
+        {
+            //Arrange
+            //We need a brand and a brand saved
+            $brand = "sHOE sTORE";
+            $test_brand = new Brand($brand);
+            $test_brand->save();
+
+            $name= "Drupal";
+            $test_store = new Store($name);
+            $test_store->save();
+
+            $test_brand->addStore($test_store);
+            $this->assertEquals($test_brand->getStores(), [$test_store]);
+        }
+        //Now we write a test for the getStores method since we need it to be able to test the Add Brand method.
+        function testGetStores()
+        {
+            //Arrange
+            //start with a brand
+            $brand = "sHOE sTORE";
+            $test_brand = new Brand($brand);
+            $test_brand->save();
+
+            $name= "Drupal";
+            $test_store = new Store($name);
+            $test_store->save();
+
+            $name2= "Drupal";
+            $test_store2 = new Store($name2);
+            $test_store2->save();
+
+            $test_brand->addStore($test_store);
+            $test_brand->addStore($test_store2);
+            //Assert
+            //we should get both of them back when we call getStores on the test store.
+            $this->assertEquals($test_brand->getStores(), [$test_store, $test_store2]);
+        }
+        //Deletes the ASSOCIATION between the brand and the course in the join table
+        function testDelete()
+        {
+            //Arrange
+            $brand = "sHOE sTORE";
+            $test_brand = new Brand($brand);
+            $test_brand->save();
+
+            $name="Bojana";
+            $test_store = new Store($name);
+            $test_store->save();
+            //Act
+            $test_brand->addStore($test_store);
+            $test_brand->delete();
+            //Assert
+            $this->assertEquals([], $test_store->getBrands());
+        }
     }
 ?>
