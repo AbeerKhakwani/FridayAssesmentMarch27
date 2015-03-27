@@ -69,10 +69,19 @@ Class Store
       }
 
       function addBrand($brand){
-          
 
+          $GLOBALS['DB']->exec("INSERT INTO stores_brands (store_id,brand_id) VALUES ({$brand_id}, {$this->getId()});");
       }
+     function getBrands(){
+         $returned_brands= $GLOBALS['DB']->query("SELECT brand.* FROM
+            brand JOIN stores_brands ON (brand.id = stores_brands.brand_id)
+            Join stores ON (stores_brands.store_id=stores.id) WHERE stores.id= {$this->getID()}
 
+
+
+         ");
+
+     }
 
 
 
