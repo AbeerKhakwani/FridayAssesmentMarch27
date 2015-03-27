@@ -73,7 +73,7 @@
             $test_brand->save();
             //Act
             $result = Brand::getAll();
-        
+
             //Assert
             $this->assertEquals($test_brand, $result[0]);
         }
@@ -109,42 +109,42 @@
             //Assert
             $this->assertEquals([$test_brand, $test_brand2], $result);
         }
-        // // //DELETE - All categories
-        // // //Since this also deals with more than one Brand it should be a static method.
-        // function testDeleteAll()
-        // {
-        //     //Arrange
-        //     //We need some categories saved into the database so that we can make sure our deleteAll method removes them all.
-        //     $brand = "sHOE sTORE";
-        //     $test_brand = new Brand($brand);
-        //     $test_brand->save();
-        //     $name2 = "Epicodus Ruby";
-        //
-        //     $test_brand2 = new Brand($name2);
-        //     $test_brand2->save();
-        //     //Act
-        //     //Delete categories.
-        //     Brand::deleteAll();
-        //     //Assert
-        //     //Now when we call getAll, we should get an empty array because we deleted all categories.
-        //     $result = Brand::getAll();
-        //     $this->assertEquals([], $result);
-        // }
-        // function testFind()
-        // {
-        //     //Arrange
-        //     //Create and save 2 categories.
-        //     $brand = "sHOE sTORE";
-        //
-        //     $test_brand = new Brand($brand);
-        //     $test_brand->save();
-        //     $name2 = "Home Economics";
-        //
-        //     $test_brand2 = new Brand($name2);
-        //     $test_brand2->save();
-        //     $result = Brand::find($test_brand->getId());
-        //     $this->assertEquals($test_brand, $result);
-        // }
+        // //DELETE - All categories
+        // //Since this also deals with more than one Brand it should be a static method.
+        function testDeleteAll()
+        {
+            //Arrange
+            //We need some categories saved into the database so that we can make sure our deleteAll method removes them all.
+            $brand = "sHOE sTORE";
+            $test_brand = new Brand($brand);
+            $test_brand->save();
+            $name2 = "Epicodus Ruby";
+
+            $test_brand2 = new Brand($name2);
+            $test_brand2->save();
+            //Act
+            //Delete categories.
+            Brand::deleteAll();
+            //Assert
+            //Now when we call getAll, we should get an empty array because we deleted all categories.
+            $result = Brand::getAll();
+            $this->assertEquals([], $result);
+        }
+        function testFind()
+        {
+            //Arrange
+            //Create and save 2 categories.
+            $brand = "sHOE sTORE";
+
+            $test_brand = new Brand($brand);
+            $test_brand->save();
+            $name2 = "Home Economics";
+
+            $test_brand2 = new Brand($name2);
+            $test_brand2->save();
+            $result = Brand::find($test_brand->getId());
+            $this->assertEquals($test_brand, $result);
+        }
         // function testUpdate()
         // {
         //     //Arrange

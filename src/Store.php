@@ -79,7 +79,7 @@ Class Store
              stores JOIN stores_brands ON (stores.id = stores_brands.store_id)
              JOIN brands ON (stores_brands.brand_id = brands.id)
              WHERE stores.id = {$this->getId()};");
-        
+
             $brands=array();
 
             foreach($returned_brands as $brand){
