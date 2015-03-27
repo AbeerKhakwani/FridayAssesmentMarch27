@@ -93,6 +93,11 @@
 
         return $app['twig']->render('brand_current.twig' ,array("brand"=>$brand, "stores"=>Store::getAll(), "all_stores"=>$brand->getStores()));
     });
+    $app->get("/brand/{id}/edit", function($id) use ($app) {
+        $brand = Brand::find($id);
+        return $app['twig']->render('edit_brand.twig', array('brand' => $brand));
+    });
+
 
     return $app;
 
