@@ -9,11 +9,11 @@ Class   Brand
         $this->id            = $initial_id;
 
     }
-    function getName()
+    function getBrand()
     {
         return $this->brand;
     }
-    function setName($new_brand)
+    function setBrand($new_brand)
     {
         $this->brand = (string) $new_brand;
     }
@@ -25,6 +25,9 @@ Class   Brand
     {
         $this->id = (int) $new_id;
     }
+
+
+
 
 }
 

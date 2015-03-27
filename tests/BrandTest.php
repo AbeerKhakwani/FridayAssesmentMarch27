@@ -64,18 +64,18 @@
             $result = $test_store->getId();
             $this->assertEquals(2, $result);
         }
-    //    CREATE - save method stores all object data in categories table.
-        // function testSave()
-        // {
-        //     //Arrange
-        //     $brand = "Famous Footware";
-        //     $test_store = new Brand($brand);
-        //     $test_store->save();
-        //     //Act
-        //     $result = Brand::getAll();
-        //     //Assert
-        //     $this->assertEquals($test_store, $result[0]);
-        // }
+       CREATE - save method stores all object data in brands table.
+        function testSave()
+        {
+            //Arrange
+            $brand = "Famous Footware";
+            $test_store = new Brand($brand);
+            $test_store->save();
+            //Act
+            $result = Brand::getAll();
+            //Assert
+            $this->assertEquals($test_store, $result[0]);
+        }
         // //This test makes sure that after saving not only are the id's equal, they are not null.
         // function testSaveSetsId()
         // {
