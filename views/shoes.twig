@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Shoe Stores</title>
+    </head>
+    <body>
+    <h1>Here Are All the shoe stores:</h1>
+
+    {% for store in stores %}
+  <a href="/store/{{ store.getId}}">{{ store.getName }}</a>
+    {% endfor %}
+
+
+
+
+    <form action='/stores' method='post'>
+            <label for='name'>Store name</label>
+            <input id='name' name='name' type='text'>
+
+            <button type='submit'>Add Store</button>
+        </form>
+
+        <form action='/delete_stores' method='post'>
+            <input name='_method' type='hidden' value='delete'>
+            <button type='submit'>Clear</button>
+        </form>
+
+        <p><a href='/'>Home</a></p>
+
+
+
+    </body>
+</html>

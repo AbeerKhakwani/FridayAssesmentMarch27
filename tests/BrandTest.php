@@ -11,7 +11,7 @@
         protected function tearDown()
          {
             Brand::deleteAll();
-             Store::deleteAll();
+            Store::deleteAll();
          }
         //Initialize a Store with a brand and be able to get it back out of the object using getBrand().
         function testGetBrand()
@@ -64,7 +64,7 @@
             $result = $test_brand->getId();
             $this->assertEquals(2, $result);
         }
-
+        //
         function testSave()
         {
             //Arrange
@@ -77,7 +77,7 @@
             //Assert
             $this->assertEquals($test_brand, $result[0]);
         }
-
+        //
         function testSaveSetsId()
         {
             //Arrange
@@ -159,7 +159,7 @@
             //Assert
             $this->assertEquals("Home Economics", $test_brand->getBrand());
         }
-        function testDeleteStore()
+        function testDeleteBrand()
         {
             //Arrange
             $brand = "sHOE sTORE";
@@ -174,7 +174,7 @@
             //Assert
             $this->assertEquals([$test_brand2], Brand::getAll());
         }
-        function testAddStore()
+        function testAddBrand()
         {
             //Arrange
             //We need a brand and a brand saved
@@ -213,21 +213,21 @@
             $this->assertEquals($test_brand->getStores(), [$test_store, $test_store2]);
         }
         //Deletes the ASSOCIATION between the brand and the course in the join table
-        function testDelete()
-        {
-            //Arrange
-            $brand = "sHOE sTORE";
-            $test_brand = new Brand($brand);
-            $test_brand->save();
+            function testDeleteStores() {
+              //Arrange
+              $title = "Maths";
+              $test_book = new Brand($title);
+              $test_book->save();
 
-            $name="Bojana";
-            $test_store = new Store($name);
-            $test_store->save();
-            //Act
-            $test_brand->addStore($test_store);
-            $test_brand->delete();
-            //Assert
-            $this->assertEquals([], $test_store->getBrands());
-        }
+              $author_name = "Dennis Lumberg";
+              $test_author = new Store($author_name);
+              $test_author->save();
+              //Act
+              $test_book->addStore($test_author);
+              $test_book->delete();
+
+              //Assert
+              $this->assertEquals([], $test_author->getBrands());
+            }
     }
 ?>

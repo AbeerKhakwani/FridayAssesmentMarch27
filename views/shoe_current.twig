@@ -1,0 +1,32 @@
+
+<html>
+<head>
+    <title>Store</title>
+</head>
+<body>
+    <h1>{{ store.getName }}</h1>
+
+{% for brand in all_brand%}
+     {{ brand.getBrand }}
+{% endfor %}
+
+    <h4>Add a Brand to this category:</h4>
+
+    <form action='/add_brand' method='post'>
+        <input id="store_id" name="store_id" type="hidden" value="{{ store.getId }}">
+        <label for="brand_id">Select a Brand</label>
+        <select id='brand_id' name='brand_id' type='text'>
+          {% for brand in brands %}
+            <option value="{{ brand.getId }}"> {{ brand.getBrand }} </option>
+          {% endfor %}
+        </select>
+        <button type='submit'>Add Brand</button>
+    </form>
+
+    <p><a href="/store/{{ store.getId }}/edit">Edit this category</a></p>
+
+    <p><a href='/'>Home</a></p>
+
+
+</body>
+</html>

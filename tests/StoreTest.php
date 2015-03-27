@@ -233,7 +233,7 @@
               $test_store->addBrand($test_brand);
               $test_store->delete();
               //Assert
-              $this->assertEquals([], $test_store->getBrands());
+              $this->assertEquals([], $test_brand->getStores());
             }
      }
 ?>
