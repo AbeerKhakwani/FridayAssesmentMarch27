@@ -12,7 +12,7 @@ Pre-requisites: Must have PHP installed.
 
 These commands are for the user that chooses a Mac. In your terminal copy paste or type the fallowing:
 
-git clone https://github.com/kbulloch/ShoeStores.git
+git clone https://github.com/AbeerKhakwani/FridayAssesmentMarch27
 
 cd ShoeStores/web
 
